@@ -5,7 +5,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 void main() async {
   // Initialize Sentry before running the app
   await SentryService().initializeSentry(
-    sentryDsn: 'https://149be919067515710e88b576b60505af@o4509032007008256.ingest.de.sentry.io/4509032008253520',
+    sentryDsn: 'https://1480c666d0e5bcaa78f079b90f43f2fe@o4509032007008256.ingest.de.sentry.io/4509104553328720',
     tracesSampleRate: 1.0,
   );
 }

@@ -6,6 +6,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'main.dart';
 
+/// guided by
+/// https://www.youtube.com/watch?v=4djseRVSan8
+///
 /// A comprehensive service for managing error tracking and reporting with Sentry
 class SentryService {
   /// Singleton instance for global access
@@ -26,7 +29,10 @@ class SentryService {
     options.tracesSampleRate = tracesSampleRate;
     options.enableAutoSessionTracking = enableAutoSessionTracking;
 
+    /// those are errors that are cached in local until reaching internet
+    options.maxCacheItems = 5;
     options.sendDefaultPii = collectIP;
+    // options.debug = false;
 
     /// Performance Related
     options.enableAutoPerformanceTracing = false;
@@ -60,6 +66,7 @@ class SentryService {
     Hint? hint,
     FutureOr<void> Function(Scope)? withScope,
   }) async {
+    // we already handled it, but still want to log it
     debugPrint('capture message $message');
     return Sentry.captureMessage(
       message,
